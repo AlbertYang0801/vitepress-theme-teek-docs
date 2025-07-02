@@ -5,9 +5,9 @@ tk:
   teekHome: false
 
 hero:
-  name: Teek
-  text: VitePress 主题
-  tagline: ✨一个轻量、简洁高效、灵活配置，易于扩展的 VitePress 主题
+  name: 技术小站
+  text: Albert Yang
+  tagline: ✨生活不止眼前的代码，还有迈向田野的步伐
   actions:
     - theme: brand
       text: 开始
@@ -16,7 +16,7 @@ hero:
       text: 配置
       link: /reference/config
   image:
-    src: /teek-logo-large.png
+    src: /bird.svg
     alt: Teek
 
 features:
@@ -34,15 +34,6 @@ features:
     details: 只需 Markdown 即可轻松创建美观的文档站点，配合多维索引快速定位每个知识点。
 ---
 
-## 💡 反馈交流
-
-在使用过程中有任何问题和想法，请给我提 [Issue](https://github.com/Kele-Bingtang/vitepress-theme-teek/issues)。 你也可以在 Issue 查看别人提的问题和解决方案。
-
-或者加入我们的交流群（添加我的微信并备注 <mark>进群</mark>）：
-
-<img src="https://gcore.jsdelivr.net/gh/Kele-Bingtang/static/index/20250412000919.png" alt="添加我微信备注「进群」" style="width: 180px;" />
-
-如果图片链接失效，可以在微信右上角 -> 添加朋友，然后搜索 `teekers` 来添加我的微信。
 
 <style>
 

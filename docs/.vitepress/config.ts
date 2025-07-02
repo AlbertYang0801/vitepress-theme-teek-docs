@@ -2,6 +2,10 @@ import { defineConfig } from "vitepress";
 import { defineTeekConfig } from "vitepress-theme-teek/config";
 import { version } from "vitepress-theme-teek/es/version";
 
+import navConfig from './configs/navConfig.mjs';
+import sidebarConfig from './configs/sidebarConfig.mjs';
+
+
 const description = [
   "欢迎来到 vitepress-theme-teek 使用文档",
   "Teek 是一个基于 VitePress 构建的主题，是在默认主题的基础上进行拓展，支持 VitePress 的所有功能、配置",
@@ -9,7 +13,7 @@ const description = [
 ].toString();
 
 const teekConfig = defineTeekConfig({
-  author: { name: "Teeker", link: "https://github.com/Kele-Bingtang" },
+  author: { name: "AlbertYang", link: "https://github.com/AlbertYang0801/blog" },
   blogger: {
     avatar: "https://testingcf.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar1.png",
     shape: "circle-rotate",
@@ -62,6 +66,7 @@ const teekConfig = defineTeekConfig({
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/blog/",
   extends: teekConfig,
   title: "vitepress-theme-teek",
   description: description,
@@ -129,7 +134,7 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/teek-logo-mini.svg",
+    logo: "/bird.svg",
     darkModeSwitchLabel: "主题",
     sidebarMenuLabel: "菜单",
     returnToTopLabel: "返回顶部",
@@ -142,34 +147,8 @@ export default defineConfig({
       prev: "上一页",
       next: "下一页",
     },
-    nav: [
-      { text: "首页", link: "/" },
-      {
-        text: "指南",
-        link: "/guide/intro",
-        activeMatch: "/01.指南/",
-      },
-      { text: "配置", link: "/reference/config", activeMatch: "/10.配置/" },
-      { text: "开发", link: "/develop/intro", activeMatch: "/15.主题开发/" },
-      {
-        text: "功能页",
-        items: [
-          { text: "归档页", link: "/archives" },
-          { text: "清单页", link: "/articleOverview" },
-          { text: "登录页", link: "/login" },
-          { text: "风险链接提示页", link: "/risk-link?target=https://vp.teek.top" },
-          { text: "分类页", link: "/categories" },
-          { text: "标签页", link: "/tags" },
-        ],
-      },
-      {
-        text: version,
-        items: [
-          { text: "历史版本", link: "https://github.com/Kele-Bingtang/vitepress-theme-teek/releases" },
-          { text: "更新日志", link: "https://github.com/Kele-Bingtang/vitepress-theme-teek/blob/dev/CHANGELOG.md" },
-        ],
-      },
-    ],
+    nav: navConfig,
+    sidebar: sidebarConfig,
     socialLinks: [{ icon: "github", link: "https://github.com/Kele-Bingtang/vitepress-theme-teek" }],
 
     search: {
