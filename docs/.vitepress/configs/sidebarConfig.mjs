@@ -6,10 +6,10 @@ import concurrent from './sidebar/java/concurrent';
 import io from './sidebar/java/io';
 //jvm
 import jvm from './sidebar/java/jvm';
-//Java容器
-import collection from './sidebar/java/collection';
 //io
 import cache from './sidebar/java/cache';
+//Java容器
+import collection from './sidebar/java/collection';
 
 //------------------------------------框架---------------------------------
 import spring from './sidebar/spring';

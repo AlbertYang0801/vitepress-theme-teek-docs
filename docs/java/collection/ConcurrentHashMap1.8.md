@@ -2,7 +2,6 @@
 
 [ConcurrentHashMap 源码分析](https://javaguide.cn/java/collection/concurrent-hash-map-source-code.html#_4-get)
 
-![image-20250528160131844]()
 
 1.8的ConcurrentHashMap，采用对Node加锁机制。
 
