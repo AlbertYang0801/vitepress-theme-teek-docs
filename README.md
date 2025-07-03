@@ -5,4 +5,5 @@
 
 ## 模板地址
 
-https://vp.teek.top/guide/quickstart.html
+[vitepress-theme-teek主题](https://vp.teek.top/guide/quickstart.html)
+
