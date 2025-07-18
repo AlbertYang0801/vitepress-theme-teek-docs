@@ -7,19 +7,17 @@ import sidebarConfig from './configs/sidebarConfig.mjs';
 
 
 const description = [
-  "欢迎来到 vitepress-theme-teek 使用文档",
-  "Teek 是一个基于 VitePress 构建的主题，是在默认主题的基础上进行拓展，支持 VitePress 的所有功能、配置",
-  "Teek 拥有三种典型的知识管理形态：结构化、碎片化、体系化，可以轻松构建一个结构化知识库，适用个人博客、文档站、知识库等场景",
+  "欢迎来到 Albert Yang 的个人博客",
 ].toString();
 
 const teekConfig = defineTeekConfig({
-  author: { name: "AlbertYang", link: "https://github.com/AlbertYang0801/blog" },
+  author: { name: "Albert Yang", link: "https://github.com/AlbertYang0801/blog" },
   blogger: {
-    avatar: "https://testingcf.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar1.png",
+    avatar: "https://s2.loli.net/2025/07/18/gKh3Rix8bMYkQ1y.jpg",
     shape: "circle-rotate",
-    name: "天客",
-    slogan: "朝圣的使徒，正在走向编程的至高殿堂！",
-    circleBgImg: "/blog/bg4.webp",
+    name: "Albert Yang",
+    slogan: "从 Hello World 开始，旅程永无止境。",
+    circleBgImg: "/blog/bg14.jpg",
     color: "#ffffff",
   },
   footerInfo: {
@@ -49,18 +47,18 @@ const teekConfig = defineTeekConfig({
     },
   },
   siteAnalytics: [
-    {
-      provider: "baidu",
-      options: {
-        id: "d5ee872d9aa1ef8021f4a3921b2e9c2a",
-      },
-    },
-    {
-      provider: "google",
-      options: {
-        id: "G-K5GNDW3L7K",
-      },
-    },
+    // {
+    //   provider: "baidu",
+    //   options: {
+    //     id: "d5ee872d9aa1ef8021f4a3921b2e9c2a",
+    //   },
+    // },
+    // {
+    //   provider: "google",
+    //   options: {
+    //     id: "G-K5GNDW3L7K",
+    //   },
+    // },
   ],
 });
 
@@ -68,7 +66,7 @@ const teekConfig = defineTeekConfig({
 export default defineConfig({
   base: "/blog/",
   extends: teekConfig,
-  title: "vitepress-theme-teek",
+  title: "AlbertYang Blog",
   description: description,
   cleanUrls: false,
   lastUpdated: true,
@@ -84,7 +82,7 @@ export default defineConfig({
     ["meta", { property: "og:url", content: "" }],
     ["meta", { property: "og:description", description }],
     ["meta", { name: "description", description }],
-    ["meta", { name: "author", content: "Teek" }],
+    ["meta", { name: "author", content: "AlbertYang" }],
     [
       "meta",
       {
@@ -94,13 +92,14 @@ export default defineConfig({
     ],
 
     ["meta", { name: "keywords", description }],
-    ["meta", { name: "baidu-site-verification", content: "codeva-GdK2q9MO1i" }], // 百度收录
-    ["meta", { name: "msvalidate.01", content: "48CABE70F538B8D117567176ABF325AF" }], // Bing 收录验证
+    // ["meta", { name: "baidu-site-verification", content: "codeva-GdK2q9MO1i" }], // 百度收录
+    // ["meta", { name: "msvalidate.01", content: "48CABE70F538B8D117567176ABF325AF" }], // Bing 收录验证
+    //网站流量统计服务  https://v6.51.la/report/overview?comId=3076464
     ["script", { charset: "UTF-8", id: "LA_COLLECT", src: "//sdk.51.la/js-sdk-pro.min.js" }], // 51.la
     [
       "script",
       {},
-      `typeof LA !== 'undefined' && LA.init({ id: "3LqfP8Icg0GeEvtn", ck: "3LqfP8Icg0GeEvtn", hashMode: true })`,
+      `typeof LA !== 'undefined' && LA.init({ id: "3MqJc1haAfZrIrqZ", ck: "3MqJc1haAfZrIrqZ", hashMode: true })`,
     ], // 51.la
   ],
   markdown: {
@@ -149,14 +148,14 @@ export default defineConfig({
     },
     nav: navConfig,
     sidebar: sidebarConfig,
-    socialLinks: [{ icon: "github", link: "https://github.com/Kele-Bingtang/vitepress-theme-teek" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/AlbertYang0801" }],
 
     search: {
       provider: "local",
     },
-    editLink: {
-      text: "在 GitHub 上编辑此页",
-      pattern: "https://github.com/Kele-Bingtang/vitepress-theme-teek/edit/master/docs/:path",
-    },
+    // editLink: {
+    //   text: "在 GitHub 上编辑此页",
+    //   pattern: "https://github.com/Kele-Bingtang/vitepress-theme-teek/edit/master/docs/:path",
+    // },
   },
 });
