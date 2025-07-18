@@ -1,6 +1,6 @@
 export default [
     {
-        text: "一、Collection集合",
+        text: "Collection集合",
         collapsed: false,
         items: [
             {text: "Collection集合概述", link: "/java/collection/Collection集合概述"},
@@ -9,7 +9,7 @@ export default [
         ]
     },
     {
-        text: "二、Map集合",
+        text: "Map集合",
         collapsed: false,
         items: [
             {text: "HashMap-1.7", link: "/java/collection/HashMap1.7"},
