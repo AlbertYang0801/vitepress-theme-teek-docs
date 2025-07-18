@@ -38,16 +38,16 @@ Spring事务是否会失效的判断标准：
 所以**声明式事务的核心，就是动态代理生成的那个对象，没有用到那个对象，事务就没戏。**
 
 1. **方法不是public的**：Spring的AOP代理只适用于public方法。如果事务方法不是public，Spring将无法创建代理，事务将不会起作用。
-   
-    > @Transactional的事务管理是通过代理实现的，Spring在启动的时候会扫描有该注解的方法，框架对非public的方法未实现代理。
-    > 
+
+   > @Transactional的事务管理是通过代理实现的，Spring在启动的时候会扫描有该注解的方法，框架对非public的方法未实现代理。
+>
 2. **没有被Spring管理的Bean中调用**：如果事务方法不由Spring管理的Bean调用，事务也不会起作用。
 3. **异常不被声明**：默认情况下，Spring的事务只在运行时异常(RuntimeException)发生时才回滚。如果方法抛出的是Checked异常，且没有在事务的声明中指定回滚规则，事务不会自动回滚。
 4. **事务方法内部调用同一个类的另一个方法**：如果在同一个类中，一个方法没有声明事务，而另一个方法声明了事务，调用时事务不会生效。
-   
-    > 方法自调用的时候，调用的不是动态代理类的方法，而是直接调用了被代理对象的方法。
-    > 
-    
+
+   > 方法自调用的时候，调用的不是动态代理类的方法，而是直接调用了被代理对象的方法。
+   >
+
     ```java
     public class UserService{
        @Transactional
@@ -56,15 +56,15 @@ Spring事务是否会失效的判断标准：
        public void useSayHello(){sayHello();}
     }
     ```
-    
+
 5. **多线程环境下的事务作用域**：每个线程都有自己的事务作用域，如果在多线程环境下，每个线程操作自己的事务，其他线程的事务不会影响当前线程的事务。
 6. **事务传播行为不正确**：如果使用了错误的事务传播行为，可能导致事务失效。
 7. **数据库本身不支持事务或者配置错误**：数据库本身不支持事务或者配置不当也可能导致事务失效。
 8. **事务管理器配置错误**：如果事务管理器没有正确配置，或者没有指定正确的数据源，事务可能不会正确执行。
 9. **异常捕获但未重新抛出**：如果捕获了事务方法中抛出的异常，但没有重新抛出，事务可能不会回滚。
-   
-    > 如果异常被自己捕获了，那么动态代理对象感知步到异常，也不会回滚。
-    > 
+
+   > 如果异常被自己捕获了，那么动态代理对象感知步到异常，也不会回滚。
+>
 10. **异步方法内无事务**：如果在异步方法内部执行事务性操作，而该异步方法没有声明事务，事务不会传播到异步执行的环境中。
 
 ### 参考链接
@@ -144,9 +144,9 @@ Spring事务是否会失效的判断标准：
 - 执行b()方法中的sql
 - b()方法正常执行完，则从ThreadLocal中拿到数据库连接b进行提交
 - 提交之后会恢复所挂起的数据库连接a，这里的恢复，其实只是把在挂起资源对象中所保存的数据库连接a再次设置到ThreadLocal中
-  
-    b()方法事务执行完毕，重置 ThreadLocal状态，将oldTransactionInfo放入ThreadLocal
-    
+
+  b()方法事务执行完毕，重置 ThreadLocal状态，将oldTransactionInfo放入ThreadLocal
+
     ```java
     		private void restoreThreadLocalStatus() {
     			// Use stack to restore old transaction TransactionInfo.
@@ -154,7 +154,7 @@ Spring事务是否会失效的判断标准：
     			transactionInfoHolder.set(this.oldTransactionInfo);
     		}
     ```
-    
+
 1. a()方法正常执行完，则从ThreadLocal中拿到数据库连接a进行提交
 
 ### 事务传播行为练习
@@ -193,7 +193,7 @@ Spring事务是否会失效的判断标准：
 ## 事务执行逻辑
 
 1. 开启事务@`EnableTransactionManagement`、`TransactionManagementConfigurationSelector.class`
-   
+
     ```java
     @MapperScan("com.albert.mysql.mapper")
     @SpringBootApplication
@@ -206,17 +206,17 @@ Spring事务是否会失效的判断标准：
     
     }
     ```
-    
+
 2. 注册类
     - `AutoProxyRegistrar`
-      
-        主要作用是开启自动代理功能，因为开启事务是在原方法类基础上生成代理对象完成的。
-        
+
+      主要作用是开启自动代理功能，因为开启事务是在原方法类基础上生成代理对象完成的。
+
     - `ProxyTransactionManagementConfiguration`
-      
-        配置类，定义了三个配置类，包含扫描事务注解和代理逻辑。
-        
-    
+
+      配置类，定义了三个配置类，包含扫描事务注解和代理逻辑。
+
+
     ```java
     public class TransactionManagementConfigurationSelector extends AdviceModeImportSelector<EnableTransactionManagement> {
     
@@ -247,17 +247,17 @@ Spring事务是否会失效的判断标准：
     
     }
     ```
-    
+
 3. 配置类`ProxyTransactionManagementConfiguration`
     - `AnnotationTransactionAttributeSource`
-      
-        用来判断某个类上是否存在@Transactional注解，或者判断某个方法上是否存在@Transactional注解的
-        
+
+      用来判断某个类上是否存在@Transactional注解，或者判断某个方法上是否存在@Transactional注解的
+
     - `TransactionInterceptor`
-      
-        代理逻辑，当某个类中存在@Transactional注解时，到时就产生一个代理对象作为Bean，代理对象在执行某个方法时，最终就会进入到TransactionInterceptor的`invoke()`方法。
-        
-    
+
+      代理逻辑，当某个类中存在@Transactional注解时，到时就产生一个代理对象作为Bean，代理对象在执行某个方法时，最终就会进入到TransactionInterceptor的`invoke()`方法。
+
+
     ```java
     	@Bean(name = TransactionManagementConfigUtils.TRANSACTION_ADVISOR_BEAN_NAME)
     	@Role(BeanDefinition.ROLE_INFRASTRUCTURE)
@@ -292,13 +292,13 @@ Spring事务是否会失效的判断标准：
     		return interceptor;
     	}
     ```
-    
+
 4. 事务方法 invoke 的基本逻辑
     - 创建事务
     - 执行业务逻辑
     - 有异常回滚事务
     - 提交事务
-    
+
     ```java
             PlatformTransactionManager ptm = asPlatformTransactionManager(tm);
     		final String joinpointIdentification = methodIdentification(method, targetClass, txAttr);
@@ -338,7 +338,7 @@ Spring事务是否会失效的判断标准：
     			return retVal;
     		}
     ```
-    
+
 
 **整个过程的核心：**
 

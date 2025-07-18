@@ -43,7 +43,7 @@ Summer Framework也仅实现Annotation配置+`@ComponentScan`扫描方式完成�
     - 扫描加了@Component注解的类
     - 扫描加了@Configuration的类
         - 同时扫描配置类里面加了@Bean注解的方法，作为Bean注入。
-            
+          
             ```java
             //扫描Configuration注解
             Configuration configuration = ClassUtils.findAnnotation(clazz, Configuration.class);
@@ -135,7 +135,7 @@ public class BeanDefinition {
 ```
 
 - beanClass是声明类型
-    
+  
     比如DataSource是声明类型，但是Bean的实际类型是它的子类 HikariDataSource。
     
     不过BeanDefinition中需要的是声明类型，因为实际类型可以通过 bean.getClass 直接获得：
@@ -148,7 +148,7 @@ public class BeanDefinition {
     ```
     
 - Order
-    
+  
     相同 Class 类型 Bean 设置执行顺序
     
     ```java
@@ -175,7 +175,7 @@ public class BeanDefinition {
     ```
     
 - primary
-    
+  
     类型相同的Bean，优先使用加了该注解的Bean。
     
     - 类型相同的Bean只允许指定一个@primary。
@@ -322,7 +322,7 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
 ### 依赖注入四种方法
 
 - 构造方法注入
-    
+  
     ```java
         public HelloA(@Autowired HelloService helloService) {
             this.helloService = helloService;
@@ -330,7 +330,7 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
     ```
     
 - 工厂方法注入
-    
+  
     ```java
         @Bean(initMethod = "init", destroyMethod = "destory")
         public HelloB helloB(@Autowired HelloService helloService) {
@@ -339,7 +339,7 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
     ```
     
 - set方法注入
-    
+  
     ```java
         @Autowired
         public HelloC setHelloService(HelloService helloService) {
@@ -349,7 +349,7 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
     ```
     
 - 字段注入
-    
+  
     ```java
         @Autowired
         HelloService helloService;
@@ -372,7 +372,7 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
 
 比如入参包含普通类型字段。
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373cc%E6%89%8B%E5%86%99Spring23fc0f0a-d000-42b6-9681-5aa128214394IOC2502bfa8-c6a2-4991-92c0-277b7f63bb00image.png)
+![image-20250702102145521](https://s2.loli.net/2025/07/02/AK6BjZRDV1OqCYd.png)
 
 <aside>
 💡 所以我们在创建Bean的过程中，需要校验构造方法或者工厂方法的入参，如果没有被Spring管理，Spring不知道应该如何为这个属性提供一个合适的值。因此，它抛出一个BeanCreationException 异常，以指示配置错误。
@@ -384,13 +384,15 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
 在Spring中，构造方法和工厂方法注入Bean的时候，入参能使用的注解只包含`@Autowired`和`@Value`。
 
 - `@Autowired`用于依赖注入，即注入其他由Spring管理的bean。
-    
+  
     @Autowired 注解是按照类型注入，需要保证容器中只有一个该类型的Bean 或者 就要加`@Primary`注解标识优先使用哪个Bean。
     
-    ![](Spring0c673815-8e8c-4dca-ab06-1de85f1373cc%E6%89%8B%E5%86%99Spring23fc0f0a-d000-42b6-9681-5aa128214394IOC2502bfa8-c6a2-4991-92c0-277b7f63bb00image_1.png)
+    
+    
+    ![image-20250702102158157](https://s2.loli.net/2025/07/02/DRWj5tFpkLnBq2X.png)
     
 - `@Value`用于设置基本类型或字符串类型的值，这些值通常来自配置文件或其他非bean资源。
-    
+  
     ```java
         public BeanTest(@Value("${server.port}") String port) {
             System.out.println("spring.port =>" + port);
@@ -403,11 +405,11 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
 对于IOC容器来说，创建Bean过程分为两步。
 
 1. 创建Bean实例，注入强依赖。
-    
+   
     如果遇到循环依赖直接报错，因为解决不了。
     
 2. 属性注入
-    
+   
     对Bean实例进行属性注入，包括 **set 方法注入** 和 **字段注入**。
     
 
@@ -430,17 +432,17 @@ void scanFactoryMethods(String factoryBeanName, Class<?> clazz, Map<String, Bean
 
 1. 构造方法创建对象
 2. 工厂方法创建对象
-    
+   
     @Configuration类里面标注了@Bean注解的方法，都是工厂方法对应的Bean对象。
     
 3. 校验 @Configuration类型的Bean。
-    
+   
     @Configuration类型的Bean是工厂，不允许使用@Autowired创建:
     
     > 因为会导致潜在的循环依赖，比如 @Configuration->A， A->B, @Configuration里面的@Bean包含B，而B只能在@Configuration初始化之后初始化。
     > 
 4. 校验入参
-    
+   
     入参要求必须包含`@Autowired`和`@Value`注解，不然就抛出 `BeanCreationException`。
     
 5. 解析入参
@@ -460,11 +462,11 @@ Spring依赖注入的其中两种方式，set方式和字段注入都发生在�
 
 - static修饰的字段无法注入
 - final修饰的字段无法注入。
-    
+  
     因为属性注入节点是在创建Bean之后，而final修饰的字段在创建Bean过程已经初始化了。在属性注入节点无法修改其内容。所以不能注入final修饰的字段属性。
     
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373cc%E6%89%8B%E5%86%99Spring23fc0f0a-d000-42b6-9681-5aa128214394IOC2502bfa8-c6a2-4991-92c0-277b7f63bb00image_2.png)
+![image-20250702102212555](https://s2.loli.net/2025/07/02/TB5LXYwtxSpI7Es.png)
 
 - 注入需要同时注入父类的属性到当前Bean
 
@@ -483,7 +485,7 @@ public class Test {
 ```
 
 - 解析@Value注解，获取获取@Value注解真实配置，反射设置为字段真实值。
-    
+  
     ```java
             //@Value注入
             if (value != null) {
@@ -499,7 +501,7 @@ public class Test {
     ```
     
 - 解析@Autowired注解
-    
+  
     从 BeanDefinition 工厂中，找到注入Bean的实例，作为属性值设置给当前Bean
     
     ```java
@@ -569,7 +571,7 @@ public class Test {
 ```
 
 - 解析@Value注解，获取获取@Value注解真实配置，作为入参调用方法。
-    
+  
     ```java
             //@Value注入
             if (value != null) {
@@ -586,7 +588,7 @@ public class Test {
     ```
     
 - 解析@Autowired注解
-    
+  
     从 BeanDefinition 工厂中，找到注入Bean的实例，作为入参调用该Method。
     
     ```java

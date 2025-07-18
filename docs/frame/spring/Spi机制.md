@@ -24,7 +24,7 @@ Service Provider Interface，是JDK提供的服务提供发现机制，能够**�
 
 ![](https://s2.loli.net/2025/05/30/aJXxP2FBnCINwZ4.png)
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373ccSpi%E6%9C%BA%E5%88%B6c5fb8f0c-19c9-4443-b6f0-58d9a65b7427image_2.png)
+![image-20250627175349606](https://s2.loli.net/2025/06/27/fQExVeJt5wAl6Ls.png)
 
 ### service配置
 

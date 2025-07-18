@@ -43,7 +43,7 @@ private void start() throws InterruptedException {
 注意不要 new Handler，而实要添加相同的 Handler，即可实现共享。
 
 > 共享 Handler 要注意线程安全问题。
-> 
+>
 
 ```java
 @ChannelHandler.Sharable

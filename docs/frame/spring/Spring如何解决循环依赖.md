@@ -3,7 +3,7 @@
 ## 依赖注入的四种方法
 
 - 构造方法注入
-    
+  
     ```java
         public HelloA(@Autowired HelloService helloService) {
             this.helloService = helloService;
@@ -11,7 +11,7 @@
     ```
     
 - 工厂方法注入
-    
+  
     ```java
         @Bean(initMethod = "init", destroyMethod = "destory")
         public HelloB helloB(@Autowired HelloService helloService) {
@@ -20,7 +20,7 @@
     ```
     
 - set方法注入
-    
+  
     ```java
         @Autowired
         public HelloC setHelloService(HelloService helloService) {
@@ -30,7 +30,7 @@
     ```
     
 - 字段注入
-    
+  
     ```java
         @Autowired
         HelloService helloService;
@@ -49,7 +49,7 @@
 
 ## 循环依赖分析
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373ccSpring%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%963adb8787-2ee9-4cd4-abd7-ce590478b45620210315164906.png)
+![](https://s2.loli.net/2025/06/27/fOXk5z2AIjltQJn.png)
 
 在创建 Bean 的过程中，有依赖注入的过程。
 
@@ -60,7 +60,7 @@
 ## 依赖场景
 
 1. 构造器注入循环依赖
-    
+   
     ```java
     @Service
     public class A {
@@ -86,7 +86,7 @@
     强依赖是无法解决循环依赖的问题的，因为Bean对象创建和属性注入是一个阶段。我们解决循环依赖是分为两个阶段，创建对象和属性注入，在属性注入时可以解决循环依赖。
     
 2. 依赖注入
-    
+   
     利用三级缓存可以解决。
     
     ```java
@@ -104,7 +104,7 @@
     ```
     
 3. Prototype类的循环依赖
-    
+   
     无法解决，因为 Prototype作用域的类不会放到缓存中，Spring通过缓存解决循环依赖。
     
 
@@ -126,22 +126,22 @@
 
 Spring引入三级缓存解决依赖注入和set方法注入可能导致的循环依赖
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373ccSpring%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%963adb8787-2ee9-4cd4-abd7-ce590478b456image.png)
+![](https://s2.loli.net/2025/06/27/VicBqvWabCmZFA7.png)
 
 - `singletonObjects`
-    
+  
     单例池，缓存的是已经**经历了完整生命周期的Bean对象**。
     
     **已经实例化并且已经属性赋值。**
     
 - `earlySingletonObjects`
-    
+  
     二级缓存，缓存的是**早期的 Bean 对象**，Bean的生命周期还没走完就放入了二级缓存。
     
     **已经实例化但是还未属性赋值。可以存放原对象，也可能存放代理对象。**
     
 - `singletonFactories`
-    
+  
     三级缓存，缓存的是ObjectFactory，表示对象工厂，用来创建早期 Bean对象的工厂，可以通过该工厂创建出代理对象。
     
 
@@ -151,7 +151,7 @@ Spring引入三级缓存解决依赖注入和set方法注入可能导致的循�
 
 Bean 实例化之后，整个 Bean生命周期 **Bean对象的堆内存地址都不会改变**。所以 B依赖的A（缓存）和走完生命周期的 A是一个对象。
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373ccSpring%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%963adb8787-2ee9-4cd4-abd7-ce590478b456image_1.png)
+![](https://s2.loli.net/2025/06/27/TgR5zyf8hBJqiF6.png)
 
 ### 为什么引入三级缓存
 
@@ -172,7 +172,7 @@ AOP之后 Bean 实际上生成了一个代理对象，该代理对象和二级�
 - 如果对象有 AOP，返回的就是 AOP 之后的代理对象。
 - 如果对象没有 AOP，返回原对象。
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373ccSpring%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%963adb8787-2ee9-4cd4-abd7-ce590478b456image_2.png)
+![](https://s2.loli.net/2025/06/27/hSd8qMcsLwRDTV1.png)
 
 注意：调用该函数不是在放入三级缓存的时候。
 

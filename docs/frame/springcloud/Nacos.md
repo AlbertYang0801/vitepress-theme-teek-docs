@@ -18,7 +18,9 @@ sh startup.sh -m standalone
 
 ### 可视化页面
 
-[http://localhost:8848/nacos](http://localhost:8848/nacos)
+`http://localhost:8848/nacos`
+
+
 
 ## 注册中心原理
 

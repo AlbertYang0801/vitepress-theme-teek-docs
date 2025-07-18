@@ -1,7 +1,7 @@
 # redis
 
 - [redis数据类型](./redis数据类型)
-- [redis数据类型原理.md](./redis数据类型原理)
+- [redis数据类型原理](./redis数据类型原理)
 - [redis的持久化](./redis的持久化)
 
 

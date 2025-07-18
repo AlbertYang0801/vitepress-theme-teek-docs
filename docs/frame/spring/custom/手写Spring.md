@@ -45,15 +45,15 @@
 ## 设计模式
 
 - 工厂模式
-    
+  
     ApplicationContext
     
 - 适配器模式
-    
+  
     AfterInvocationHandlerAdapter
     
 - 模版模式
-    
+  
     JdbcTemplate
     
 
@@ -63,4 +63,6 @@
 
 [简介 - 手写Spring - 廖雪峰的官方网站](https://liaoxuefeng.com/books/summerframework/introduction/index.html)
 
-![](Spring0c673815-8e8c-4dca-ab06-1de85f1373cc%E6%89%8B%E5%86%99Spring23fc0f0a-d000-42b6-9681-5aa128214394image.png)
+
+
+![image-20250702102300236](https://s2.loli.net/2025/07/02/G6nrsIeoTVRmxO3.png)

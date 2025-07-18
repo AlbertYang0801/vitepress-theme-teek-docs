@@ -9,11 +9,11 @@
 ## 注解注入的区别
 
 - @Resource
-  
-    byName注入
-    
-    ![](https://s2.loli.net/2025/05/30/KCvmoWrP1AyziVt.png)
-    
+
+  byName注入
+
+  ![](https://s2.loli.net/2025/05/30/KCvmoWrP1AyziVt.png)
+
 - Autowired
-  
-    byType注入
+
+  byType注入
