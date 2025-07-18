@@ -8,7 +8,7 @@ import {
   TkThemeEnhanceBaseTemplate,
   useClipboard,
 } from "vitepress-theme-teek";
-import { nextTick, ref, watch } from "vue";
+import {nextTick, onMounted, ref, watch} from "vue";
 import {
   teekDocConfig,
   teekBlogConfig,
@@ -57,8 +57,8 @@ const emit = defineEmits<{
 }>();
 
 // 默认文档风格
-const themeStyle = defineModel({ default: "doc" });
-const teekConfig = ref(teekDocConfig);
+const themeStyle = defineModel({ default: "blog-card" });
+const teekConfig = ref(teekBlogCardConfig);
 
 const { copy, copied } = useClipboard();
 const isMobile = useMediaQuery("(max-width: 768px)");
@@ -85,6 +85,7 @@ const update = async (style: string) => {
 };
 
 watch(themeStyle, update);
+
 
 const handleCopy = async () => {
   await copy(JSON.stringify(teekConfig.value, null, 2));

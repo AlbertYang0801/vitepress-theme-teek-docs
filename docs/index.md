@@ -6,7 +6,6 @@ tk:
 
 hero:
   name: 技术小站
-  text: Albert Yang
   tagline: ✨生活不止眼前的代码，还有迈向田野的步伐
   actions:
     - theme: brand
