@@ -1,9 +1,11 @@
 import {defineConfig} from "vitepress";
 import {defineTeekConfig} from "vitepress-theme-teek/config";
+
 import {version} from "vitepress-theme-teek/es/version";
 
 import navConfig from './configs/navConfig.mjs';
 import sidebarConfig from './configs/sidebarConfig.mjs';
+import {teekBlogBodyConfig, teekBlogCardConfig, teekBlogFullConfig} from "./theme/config/teekConfig";
 
 
 const description = [
@@ -11,6 +13,7 @@ const description = [
 ].toString();
 
 const teekConfig = defineTeekConfig({
+    pageStyle: "segment-nav",
     author: {name: "Albert Yang", link: "https://github.com/AlbertYang0801/blog"},
     blogger: {
         avatar: "https://s2.loli.net/2025/07/18/gKh3Rix8bMYkQ1y.jpg",
@@ -40,6 +43,8 @@ const teekConfig = defineTeekConfig({
     post: {
         //Teek 支持截取 Markdown 文档里的文本作为文章摘要显示在文章列表上，默认截取前 300 个文本，但是实际显示的文本会根据文章列表的空间限制而改变。
         showCapture: false,
+        coverImgMode: "full", // 封面图模式，default 为默认，full 为全图
+        showMore: true, // 是否显示更多按钮
     },
     articleShare: {enabled: true},
     vitePlugins: {
@@ -65,7 +70,7 @@ const teekConfig = defineTeekConfig({
         //     id: "G-K5GNDW3L7K",
         //   },
         // },
-    ],
+    ]
 });
 
 // https://vitepress.dev/reference/site-config
@@ -155,7 +160,6 @@ export default defineConfig({
         nav: navConfig,
         sidebar: sidebarConfig,
         socialLinks: [{icon: "github", link: "https://github.com/AlbertYang0801"}],
-
         search: {
             provider: "local",
         },

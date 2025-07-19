@@ -100,7 +100,7 @@ export const teekBlogParkConfig: TeekConfig = {
     banner: {
         name: "🎉 AlbertYang Blog",
         bgStyle: "partImg",
-        imgSrc: ["/blog/bg1.webp", "/blog/bg2.webp", "/blog/bg3.webp"],
+        imgSrc: ["/blog/bg21.jpg"],
         description: [
             "从 Hello World 开始，旅程永无止境。",
             "积跬步以至千里，致敬每个爱学习的你 —— 来自 Evan Xu",
@@ -119,7 +119,7 @@ export const teekBlogFullConfig: TeekConfig = {
     banner: {
         name: "🎉 Teek Blog",
         bgStyle: "fullImg",
-        imgSrc: ["/blog/bg1.webp", "/blog/bg2.webp", "/blog/bg3.webp"],
+        imgSrc: ["/blog/bg21.jpg"],
         description: [
             "故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt",
             "积跬步以至千里，致敬每个爱学习的你 —— 来自 Evan Xu",
@@ -148,7 +148,7 @@ export const teekBlogBodyConfig: TeekConfig = {
     },
     pageStyle: "segment-nav",
     bodyBgImg: {
-        imgSrc: ["/blog/bg1.webp", "/blog/bg2.webp", "/blog/bg3.webp"],
+        imgSrc: ["/blog/bg21.jpg"],
     },
     themeEnhance: {
         layoutSwitch: {
@@ -167,10 +167,10 @@ export const teekBlogCardConfig: TeekConfig = {
     banner: {
         name: "🎉 AlbertYang Blog",
         bgStyle: "fullImg",
-        imgSrc: ["/blog/bg21.jpg", "/blog/bg22.png", "/blog/bg2.jpg"],
+        imgSrc: ["/blog/bg21.jpg", "/blog/bg23.jpg"],
         description: [
             "从 Hello World 开始，旅程永无止境。",
-            "Debug 世界，也优化自己。",
+            "正在加载人生意义…… (进度 30%)",
         ],
         descStyle: "types",
     },

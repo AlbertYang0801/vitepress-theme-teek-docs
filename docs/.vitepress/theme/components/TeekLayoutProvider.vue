@@ -3,7 +3,7 @@ import type { TeekConfig } from "vitepress-theme-teek";
 import Teek, { teekConfigContext, clockIcon } from "vitepress-theme-teek";
 import { useData } from "vitepress";
 import { watch, nextTick, ref, provide } from "vue";
-import { teekDocConfig } from "../config/teekConfig";
+import {teekBlogCardConfig, teekBlogFullConfig, teekDocConfig} from "../config/teekConfig";
 import { useRibbon } from "../composables/useRibbon";
 import { useRuntime } from "../composables/useRuntime";
 import ConfigSwitch from "./ConfigSwitch.vue";
@@ -14,8 +14,8 @@ const ns = "layout-provider";
 const { frontmatter } = useData();
 
 // 默认文档风
-const currentStyle = ref("doc");
-const teekConfig = ref(teekDocConfig);
+const currentStyle = ref("blog-card");
+const teekConfig = ref(teekBlogCardConfig);
 provide(teekConfigContext, teekConfig);
 
 // 彩带背景
@@ -51,15 +51,16 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
 
 <template>
   <Teek.Layout>
-    <template #teek-theme-enhance-bottom>
-      <div :class="[ns, 'flx-align-center']">
-        <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />
-      </div>
-    </template>
+<!--    注释这部分切换主题-->
+<!--    <template #teek-theme-enhance-bottom>-->
+<!--      <div :class="[ns, 'flx-align-center']">-->
+<!--        <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />-->
+<!--      </div>-->
+<!--    </template>-->
 
-    <template #nav-screen-content-after>
-      <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />
-    </template>
+<!--    <template #nav-screen-content-after>-->
+<!--      <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />-->
+<!--    </template>-->
 
     <template #teek-archives-top-before>
       <ContributeChart />

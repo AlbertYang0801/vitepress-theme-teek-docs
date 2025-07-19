@@ -18,6 +18,7 @@ import "vitepress-theme-teek/theme-chalk/tk-banner-desc-gradient.css";
 import "./styles/code-bg.scss";
 import "./styles/iframe.scss";
 import "./styles/var.css";
+import "./styles/tk-code-style.css";
 
 export default {
   extends: Teek,

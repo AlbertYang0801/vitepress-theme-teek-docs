@@ -57,8 +57,8 @@ const emit = defineEmits<{
 }>();
 
 // 默认文档风格
-const themeStyle = defineModel({ default: "blog-card" });
-const teekConfig = ref(teekBlogCardConfig);
+const themeStyle = defineModel({ default: "blog-full" });
+const teekConfig = ref(teekBlogFullConfig);
 
 const { copy, copied } = useClipboard();
 const isMobile = useMediaQuery("(max-width: 768px)");
