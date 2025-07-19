@@ -36,7 +36,7 @@ const teekBlogCommonConfig: TeekConfig = {
     //启用 不蒜子（Busuanzi） 网站统计服务，主要作用是为网站提供轻量级的访问计数器功能
     docAnalysis: {
         enabled: true,
-        createTime: "2025-7-10",
+        createTime: "2024-7-10",
         wordCount: true,
         readingTime: true,
         statistics: {
@@ -55,12 +55,6 @@ const teekBlogCommonConfig: TeekConfig = {
     },
     friendLink: {
         list: [
-            {
-                name: "Teeker",
-                desc: "朝圣的使徒，正在走向编程的至高殿堂！",
-                avatar: "https://testingcf.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar2.png",
-                link: "http://notes.teek.top/",
-            },
             {
                 name: "vuepress-theme-vdoing",
                 desc: "🚀一款简洁高效的VuePress 知识管理&博客 主题",
@@ -171,6 +165,8 @@ export const teekBlogCardConfig: TeekConfig = {
         description: [
             "从 Hello World 开始，旅程永无止境。",
             "正在加载人生意义…… (进度 30%)",
+            "键盘敲烂，月薪过万。",
+            "NPC: Nice Programming Code."
         ],
         descStyle: "types",
     },

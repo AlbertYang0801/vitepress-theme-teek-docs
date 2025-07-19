@@ -19,7 +19,7 @@ const teekConfig = defineTeekConfig({
         avatar: "https://s2.loli.net/2025/07/18/gKh3Rix8bMYkQ1y.jpg",
         shape: "circle-rotate",
         name: "Albert Yang",
-        slogan: "从 Hello World 开始，旅程永无止境。",
+        slogan: "Learn Fast, Code Better",
         circleBgImg: "/blog/bg14.jpg",
         color: "#ffffff",
     },
