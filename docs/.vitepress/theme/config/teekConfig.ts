@@ -161,11 +161,19 @@ export const teekBlogCardConfig: TeekConfig = {
     banner: {
         name: "🎉 AlbertYang Blog",
         bgStyle: "fullImg",
-        imgSrc: ["/blog/bg21.jpg", "/blog/bg23.jpg"],
+        imgSrc: [
+            "/hangzhou/xihu.jpg",
+            "/scene/2.jpg",
+            "/scene/3.png",
+            "/scene/4.png",
+            "/scene/5.png",
+            "/scene/6.png",
+            // "/blog/bg21.jpg",
+            // "/blog/bg23.jpg"
+        ],
         description: [
             "从 Hello World 开始，旅程永无止境。",
             "正在加载人生意义…… (进度 30%)",
-            "键盘敲烂，月薪过万。",
             "NPC: Nice Programming Code."
         ],
         descStyle: "types",
