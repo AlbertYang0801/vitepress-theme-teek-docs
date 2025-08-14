@@ -56,10 +56,10 @@ const teekBlogCommonConfig: TeekConfig = {
     friendLink: {
         list: [
             {
-                name: "vuepress-theme-vdoing",
-                desc: "🚀一款简洁高效的VuePress 知识管理&博客 主题",
-                avatar: "https://doc.xugaoyi.com/img/logo.png",
-                link: "https://doc.xugaoyi.com/",
+                name: "vitepress-theme-teek",
+                desc: "✨一个轻量、简洁高效、灵活配置，易于扩展的 VitePress 主题",
+                avatar: "teek-logo-mini.svg",
+                link: "https://vp.teek.top/",
             }
         ],
         autoScroll: true,

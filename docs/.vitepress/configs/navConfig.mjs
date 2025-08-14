@@ -54,7 +54,7 @@ export default [
                 items: [
                     {text: 'Opentelemetry', link: '/other/observability/Opentelemetry'},
                     {text: 'Skywalking', link: '/other/observability/skywalking/'},
-                    {text: '日志收集', link: '/other/observability/日志收集全链路'}
+                    {text: '日志收集', link: '/other/observability/log/'}
                 ]
             },
             {text: '设计模式', link: '/other/design/'},

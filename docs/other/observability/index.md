@@ -1,17 +1,30 @@
+# 可观测性常见维度
+可观测性指的是对于系统内部运行状态的全面洞察和理解能力。
 
-## 可观测性
+可观测性项⽬旨在提供⼯具和解决⽅案，帮助开发⼈员和运维团队更好地监视、调试和理解其应⽤程序的行为。
 
-- [可观测性常见维度](%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md)
-- [Opentelemetry](opentelemetry%2FOpentelemetry.md)
+## 维度
 
-## Skywalking
+- 日志采集 （log）
+- 指标采集 （Metric）
+- 链路追踪（Trace）
+- 告警管理（AlertManager）
+- 可视化（Visualization）
 
-- [组件安装](skywalking%2F%E7%BB%84%E4%BB%B6%E5%AE%89%E8%A3%85.md)
-- [源码学习](skywalking%2F%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0.md)
+整个可观测项目，维度除了常见的 log、metric、trace之外。还包括告警和可视化。
 
-![PixPin_2025-07-16_13-42-44](https://s2.loli.net/2025/07/16/sSgvWuc6m9lTwix.png)
+### 指标
 
+指标又可以分为：
 
+- 基础设施
 
-## 日志
-- [日志收集全链路](log%2F%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%85%A8%E9%93%BE%E8%B7%AF.md)
+  服务器、数据库、MQ的指标。
+
+- 应用维度
+
+  应用包含模块和中间件，应用指标由这些组件构成的。
+
+- 业务维度
+
+  业务流水号、订单情况。

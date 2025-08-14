@@ -3,8 +3,8 @@ export default [
         text: "可观测性",
         collapsed: false,
         items: [
-            {text: "可观测性", link: "/other/observability/可观测性"},
-            {text: "Opentelemetry", link: "/other/observability/Opentelemetry"}
+            {text: "可观测性", link: "/other/observability/opentelemetry/index.md"},
+            {text: "Opentelemetry", link: "/other/observability/opentelemetry/Opentelemetry"}
         ]
     }, {
         text: "Skywalking",
@@ -17,7 +17,7 @@ export default [
         text: "日志收集",
         collapsed: false,
         items: [
-            {text: "日志收集全链路", link: "/other/observability/log/日志收集全链路"}
+            {text: "日志收集全链路", link: "/other/observability/log/"}
         ]
     }
 ]
