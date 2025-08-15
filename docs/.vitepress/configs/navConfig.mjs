@@ -52,7 +52,7 @@ export default [
             {
                 text: '可观测性',
                 items: [
-                    {text: 'Opentelemetry', link: '/other/observability/Opentelemetry'},
+                    {text: 'Opentelemetry', link: '/other/observability/opentelemetry/'},
                     {text: 'Skywalking', link: '/other/observability/skywalking/'},
                     {text: '日志收集', link: '/other/observability/log/'}
                 ]

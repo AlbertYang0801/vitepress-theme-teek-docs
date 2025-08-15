@@ -3,8 +3,8 @@ export default [
         text: "可观测性",
         collapsed: false,
         items: [
-            {text: "可观测性", link: "/other/observability/opentelemetry/index.md"},
-            {text: "Opentelemetry", link: "/other/observability/opentelemetry/Opentelemetry"}
+            {text: "可观测性", link: "/other/observability/opentelemetry/可观测性.md"},
+            {text: "Opentelemetry", link: "/other/observability/opentelemetry/"}
         ]
     }, {
         text: "Skywalking",

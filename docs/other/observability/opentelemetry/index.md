@@ -1,30 +1,49 @@
-# 可观测性
-可观测性指的是对于系统内部运行状态的全面洞察和理解能力。
+# Opentelemetry
 
-可观测性项⽬旨在提供⼯具和解决⽅案，帮助开发⼈员和运维团队更好地监视、调试和理解其应⽤程序的行为。
+[docs-cn/OT.md at main · open-telemetry/docs-cn](https://github.com/open-telemetry/docs-cn/blob/main/OT.md)
 
-## 维度
+## OpenTracing&OpenCensus
 
-- 日志采集 （log）
-- 指标采集 （Metric）
-- 链路追踪（Trace）
-- 告警管理（AlertManager）
-- 可视化（Visualization）
+- OpenTracing 制定了一套平台无关、厂商无关的协议标准，使得开发人员能够方便的添加或更换底层 APM 的实现。
+- OpenCensus支持Metrics、分布式跟踪。
 
-整个可观测项目，维度除了常见的 log、metric、trace之外。还包括告警和可视化。
+## OpenTelemetry
 
-### 指标
+OpenTelemetry 的核心工作目前主要集中在 3 个部分：
 
-指标又可以分为：
+1. **规范的制定和协议的统一，规范包含数据传输、API的规范。**协议的统一包含：HTTP W3C的标准支持及GRPC 等框架的协议标准。
+2. 多语言SDK的实现和集成，用户可以使用 SDK 进行代码自动注入和手动埋点，同时对其他三方库（Log4j、LogBack等）进行集成支持；
+3. 数据收集系统的实现，当前是基于 OpenCensus Service 的收集系统，包括 Agent 和 Collector。
 
-- 基础设施
+OpenTelemetry 的自身定位很明确：**数据采集和标准规范的统一**，对于数据如何去使用、存储、展示、告警，官方是不涉及的。
 
-  服务器、数据库、MQ的指标。
+## 架构
 
-- 应用维度
+![image.png](https://s2.loli.net/2025/07/16/cUypDZ6nLvGJM8O.png)
 
-  应用包含模块和中间件，应用指标由这些组件构成的。
+![image.png](https://s2.loli.net/2025/07/16/ZpNX6LnQY4r1asy.png)
 
-- 业务维度
+第三方将数据通过 OTLP 协议上报，然后 OTEL Collector 接收数据之后可以转换格式，写入第三方数据源，比如 Prometheus。
 
-  业务流水号、订单情况。
+![image.png](https://s2.loli.net/2025/07/16/kIVHsUcXD9eJ52R.png)
+
+## 数据格式定义
+
+- Protobuf格式
+  
+    [opentelemetry-proto/metrics.proto at main · open-telemetry/opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/metrics/v1/metrics.proto)
+    
+- Json格式
+  
+    [opentelemetry-proto/examples/metrics.json at main · open-telemetry/opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/blob/main/examples/metrics.json)
+    
+- Otel2PrometheusConverter
+  
+    Otel 数据转换为 Prometheus 格式数据。
+    
+    [opentelemetry-java/exporters/prometheus/src/main/java/io/opentelemetry/exporter/prometheus/Otel2PrometheusConverter.java at main · open-telemetry/opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java/blob/main/exporters/prometheus/src/main/java/io/opentelemetry/exporter/prometheus/Otel2PrometheusConverter.java)
+    
+
+## 参考文档
+
+[什么是 OpenTelemetry？](https://opentelemetry.io/zh/docs/what-is-opentelemetry/)
